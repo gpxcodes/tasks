@@ -14,6 +14,10 @@ var taskFormHandler = function(event) {
         alert("my guy pic your struggle");
         return false;
     }
+
+    // formresets to its default values 
+    formEl.reset();
+
     // package up data as object for new fuction code refactor 
     var taskDataObj = {
         name: taskNameInput,
