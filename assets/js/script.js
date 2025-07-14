@@ -1,11 +1,31 @@
-var buttonEl = document.querySelector("#save-task");
+var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
 
-var createTaskHandler = function() {
+var createTaskHandler = function(event) {
+  
+    event.preventDefault();
+// retrieve task value and task type 
+    var taskNameInput = document.querySelector("input[name='task-name']").value;
+    var taskTypeInput = document.querySelector("select[name='task-type']").value;
+
+
+    // create list item 
     var listItemEl = document.createElement("li");
     listItemEl.className = "task-item";
-    listItemEl.textContent = "new task";
+
+    // create div to hold task info and add list item 
+    var taskInfoEl = document.createElement("div");
+    // give it the class 
+    taskInfoEl.className = "task-info";
+    // add to HTML 
+    taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskNameInput + "</h3> <span class='task-type'>" + taskTypeInput + "</span>";
+
+// once we set data ^ into the div , we append it to the list here li 
+    listItemEl.appendChild(taskInfoEl);
+
+    // add entire list div to list (to the parent ul)
     tasksToDoEl.appendChild(listItemEl);
 };
-buttonEl.addEventListener("click", createTaskHandler); 
+
+formEl.addEventListener("submit", createTaskHandler);

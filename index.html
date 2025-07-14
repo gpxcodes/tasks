@@ -11,14 +11,29 @@
     <header>
         <h1 class="page-title"> Things to do</h1>
         <p>click the button to add a new task</p>
-        <button class="btn" id="save-task" >add task</button>
+        <form id="task-form">
+        <div class="form-group">
+            <input type="text" name="task-name" class="text-input" placeholder="enter task name" />
+            </div>
+            <div class="form-group">
+                <select name="task-type" class="select-dropdown">
+                    <option value="" disabled selected>pick a type</option>
+                    <option value="home">home</option>
+                    <option value="work">work</option>
+                    <option value="misc">misc.</option>
+                </select>
+            </div>       
+            <button class="btn" id="save-task" type="submit" > add task</button>       
+        </div>
+    </form>
+        
     </header>
 
     <main class="page-content">
         <section class="task-list-wrapper">
             <h2 class="list-title">start here:</h2>
             <ul class="task-list" id="tasks-to-do">
-                <li class="task-item"> new task </li>
+                <!-- <li class="task-item"> new task </li> -->
             </ul>
         </section>
     </main>
