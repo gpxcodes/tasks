@@ -109,13 +109,37 @@ for (var i = 0; i < statusChoices.length; i++) {
 }
  
 var taskButtonHandler = function(event) {
-    console.log(event.target);
-// if the delete button is clicked 
-    if(event.target.matches(".delete-btn")) {
+    // get target element from event 
+    var targetEl = event.target;
+
+    // if edit button is clicked 
+    if(targetEl.matches(".edit-btn")) {
+        var taskId = targetEl.getAttribute("data-task-id");
+        editTask(taskId);
+    }
+// else the delete button is clicked 
+    else if (targetEl.matches(".delete-btn")) {
         // get the tasks id to know what task to delete 
-        var taskId = event.target.getAttribute("data-task-id");
+        var taskId = targetEl.getAttribute("data-task-id");
         deleteTask(taskId);
     }
+};
+
+var editTask = function(taskId) {
+    console.log(taskId);
+// get task list item element 
+    var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+
+// get content from task name and type 
+var taskName = taskSelected.querySelector("h3.task-name").textContent;
+document.querySelector("input[name='task-name']").value = taskName;
+
+var taskType = taskSelected.querySelector("span.task-type").textContent;
+document.querySelector("select[name='task-type']").value = taskType;
+document.querySelector("#save-task").textContent = "save";
+
+formEl.setAttribute("data-task-id", taskId);
+
 };
 
 var deleteTask = function(taskId) {
