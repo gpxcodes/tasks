@@ -54,6 +54,14 @@ var completeEditTask = function(taskName, taskType, taskId) {
     taskSelected.querySelector("h3.task-name").textContent = taskName;
     taskSelected.querySelector("span.task-type").textContent = taskType;
 
+    // loop through tasks array and task object with new content 
+    for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === parseInt(taskId)) {
+            tasks[i].name = taskName;
+            tasks[i].type = taskType;
+        }
+    };
+
     alert("updated!");
 
     formEl.removeAttribute("data-task-id");
@@ -89,7 +97,7 @@ var createTaskEl = function(taskDataObj) {
 
     taskDataObj.id = taskIdCounter;
 
-    tasks.push(taskDataObj);
+    tasks.push(taskDataObj)
 
     // increase count for next unique id 
     taskIdCounter++;
@@ -178,6 +186,15 @@ else if (statusValue === "doing") {
 else if (statusValue === "donezo") {
   tasksCompletedEl.appendChild(taskSelected);
 }
+
+// update task's in tasks array
+for (var i = 0; i < tasks.length; i++) {
+  if (tasks[i].id === parseInt(taskId)) {
+    tasks[i].status = statusValue;
+  }
+}
+
+console.log(tasks);
 
 };
 
