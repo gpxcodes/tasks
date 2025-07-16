@@ -3,10 +3,10 @@
 }
 
 :root {
-  --primary: #44e9ff;
-  --secondary: #497980;
-  --tertiary: rgb(192, 246, 253);
-  --grey: #333;
+  --primary: #ff92e7;
+  --secondary: #f74040;
+  --tertiary: rgb(255, 174, 174);
+  --grey: #3010e6;
   font-size: 62.5%;
 }
 
@@ -28,7 +28,7 @@ header {
 }
 
 header p {
-  color: var(--tertiary);
+  color: var(--grey);
   margin: 5px 0 20px;
   font-size: 2rem;
 }
